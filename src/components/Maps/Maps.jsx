@@ -1,11 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import {
-  Paper,
-  Typography,
-  useMediaQuery,
-  usedMediaQuerry,
-} from "@material-ui/core";
+import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
@@ -66,7 +61,7 @@ const Maps = ({
                     }
                     alt={place.name}
                   />
-                  <Rating size="small" value={Number(place.rating)} readonly />
+                  <Rating size="small" value={Number(place.rating)} readOnly />
                 </Paper>
               )}
             </div>

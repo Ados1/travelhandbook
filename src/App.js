@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CssBaseline, Grid } from "@material-ui/core";
 
-import { getPlacesData, getWeatherData } from "./api";
+import { getPlacesData } from "./api";
 
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
@@ -9,7 +9,7 @@ import Maps from "./components/Maps/Maps";
 
 const App = () => {
   const [places, setPlaces] = useState([]);
-  const [weatherData, setWeatherData] = useState([]);
+
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
 
@@ -31,13 +31,15 @@ const App = () => {
   useEffect(() => {
     const filteredPlaces = places.filter((place) => place.rating > rating);
     setFilteredPlaces(filteredPlaces);
-  }, [rating]);
+  }, [places, rating]);
 
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+        setPlaces(
+          data?.filter((place) => place.name && places.num_reviews > 0)
+        );
         setFilteredPlaces([]);
         setIsLoading(false);
       });
