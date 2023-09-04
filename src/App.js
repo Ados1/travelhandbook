@@ -31,15 +31,13 @@ const App = () => {
   useEffect(() => {
     const filteredPlaces = places.filter((place) => place.rating > rating);
     setFilteredPlaces(filteredPlaces);
-  }, [places, rating]);
+  }, [rating]);
 
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        setPlaces(
-          data?.filter((place) => place.name && places.num_reviews > 0)
-        );
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
         setIsLoading(false);
       });
