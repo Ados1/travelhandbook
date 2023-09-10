@@ -67,13 +67,13 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           </Box>
         ))}
         {place?.cuisine?.map(({ name }) => (
-          <chip key={name} size="small" label={name} className={classes.chip} />
+          <Chip key={name} size="small" label={name} className={classes.chip} />
         ))}
         ;
         {place?.address && (
           <Typography
             gutterBottom
-            variant="body2"
+            variant="subtitle2"
             color="textSecondary"
             className={classes.subtitle}
           >
@@ -93,20 +93,20 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           </Typography>
         )}
         <CardActions>
-          <button
+          <Button
             size="small"
             color="primary"
             onClick={() => window.open(place.web_url, "_blank")}
           >
             Trip Advisor
-          </button>
-          <button
+          </Button>
+          <Button
             size="small"
             color="primary"
             onClick={() => window.open(place.website, "_blank")}
           >
             Website
-          </button>
+          </Button>
         </CardActions>
       </CardContent>
     </Card>
