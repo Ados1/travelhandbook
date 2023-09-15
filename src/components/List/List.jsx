@@ -31,7 +31,7 @@ const List = ({
       .fill()
       .map((_, i) => elRefs[i] || createRef());
     setElRefs(refs);
-  }, [elRefs, places]);
+  }, [places]);
   return (
     <div className={classes.container}>
       <Typography variant="h4">
@@ -62,7 +62,7 @@ const List = ({
           </FormControl>
           <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
-              <Grid ref={elRefs[i]} item key={i} xs={12}>
+              <Grid item key={i} xs={12}>
                 <PlaceDetails
                   place={place}
                   selected={Number(childClicked) === i}
